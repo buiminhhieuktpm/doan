@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zxx" xmls:th="http://www.thymleaf.org">
+
+<head th:replace="fragments_user::headuser"/>
+<body>
+	<div th:replace="fragments_user :: preloaduser"></div>
+    
+
+    <!-- Header Section Begin -->
+    <header th:replace="fragments_user::headeruser"></header>
+    <!-- Header Section End -->
+     <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
+                        <div >
+                          	<form class="navbar-form" th:action="@{/home/product/page/1}" style="margin-left: 264px;">
+                              	<input class="form-control" placeholder="Tìm kiếm" name="keyword" th:value="${keyword}" type="text" required/>
+                               	<input class="btn btn-warning" type="submit" value="Tìm kiếm"/>
+                          	</form>
+                     	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                        <div class="sidebar__categories">
+                            <div class="section-title">
+                                <h4>Thư viện giày</h4>
+                            </div>
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-heading active">
+                                            <a data-toggle="collapse" data-target="#collapseOne">Hãng</a>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="#">Van</a></li>
+                                                    <li><a href="#">Converse</a></li>
+                                                    <li><a href="#">Adidas</a></li>
+                                                    <li><a href="#">Nike</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseTwo">Loại</a>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="#"></a></li>
+                                                    <li><a href="#"></a></li>
+                                                    <li><a href="#"></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseThree">Search</a>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar__filter">
+							<div class="section-title">
+							<h4>Shop by price</h4>
+							</div>
+							<div class="filter-range-wrap">
+							<div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="30"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+							<div class="range-slider">
+							<div class="price-input">
+							<p>Price:</p>
+							<input type="text" id="minamount">
+							<input type="text" id="maxamount">
+							</div>
+							</div>
+							</div>
+							<a href="#">Filter</a>
+						</div>
+                        <div class="sidebar__sizes">
+                            <div class="section-title">
+                                <h4>Shop by size</h4>
+                            </div>
+                            <div class="size__list">
+                                <label for="xxs">
+                                    36
+                                    <input type="checkbox" id="xxs">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="xs">
+                                    37
+                                    <input type="checkbox" id="xs">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="xss">
+                                    38
+                                    <input type="checkbox" id="xss">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="s">
+                                    39
+                                    <input type="checkbox" id="s">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="m">
+                                    40
+                                    <input type="checkbox" id="m">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="ml">
+                                    41
+                                    <input type="checkbox" id="ml">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="l">
+                                    42
+                                    <input type="checkbox" id="l">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="xl">
+                                    43
+                                    <input type="checkbox" id="xl">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div th:each="d : ${list}" class="col-lg-4 col-md-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" th:data-setbg="${d.img}">
+                                    <div class="label new">Mới</div>
+                                    <ul class="product__hover">
+                                        <li><a th:href="@{${d.img}}" class="image-popup"><span
+                                                    class="arrow_expand"></span></a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a th:href="@{'/home/product/view/'+${d.id}}" th:text="${d.name}"></a></h6>
+
+                                    <div class="product__price" th:text="${d.price}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 text-center">
+                            <div class="pagination__option">
+                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                            	<a  th:href="@{'/home/product/page/' + ${i}} +'?cid='+${cid} +${keyword != null ? '&keyword=' + keyword : ''}" style="font-family: arial; font-size: 18px;">[[${i}]]</a>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+    <!-- Instagram Begin -->
+    <div th:replace="fragments_user :: instagram"></div>
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+    <footer th:replace="fragments_user :: footeruser">
+        
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="/user/js/jquery-3.3.1.min.js"></script>
+    <script src="/user/js/bootstrap.min.js"></script>
+    <script src="/user/js/jquery.magnific-popup.min.js"></script>
+    <script src="/user/js/jquery-ui.min.js"></script>
+    <script src="/user/js/mixitup.min.js"></script>
+    <script src="/user/js/jquery.countdown.min.js"></script>
+    <script src="/user/js/jquery.slicknav.js"></script>
+    <script src="/user/js/owl.carousel.min.js"></script>
+    <script src="/user/js/jquery.nicescroll.min.js"></script>
+    <script src="/user/js/main.js"></script>
+</body>
+</html>
